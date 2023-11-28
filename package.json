@@ -1,0 +1,19 @@
+{
+  "name": "projeto2node",
+  "version": "1.0.0",
+  "description": "projeto da aula de node da faculdade",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/VitorValentim/Projeto2Node.git)"
+  },
+  "keywords": [
+    "node",
+    "aprender"
+  ],
+  "author": "Vitor Valentim",
+  "license": "ISC"
+}
