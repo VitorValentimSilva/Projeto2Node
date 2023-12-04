@@ -15,11 +15,11 @@ h1{
 }
 
 form{
-  width: 670px;
+  width: 350px;
   text-align: center;
   margin: auto;
   padding: 1%;
-  background-color: rgb(214, 113, 113);
+  background-color: rgba(182, 167, 247, 0.616);
   border: 2px solid rgba(0, 0, 0, 0.329);
   border-radius: 15px;
 }
@@ -30,20 +30,27 @@ label{
 }
 
 input{
-  padding: 0.9%;
-  margin: 1%;
+  padding: 1.8%;
+  margin-top: 4%;
+  margin-bottom: 4%;
   border-radius: 8px;
 }
 
 button{
   cursor: pointer;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   background-color: rgb(81, 223, 93);
   margin-top: 3%;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+p{
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(255, 0, 0);
 }
