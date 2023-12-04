@@ -1,0 +1,49 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
+
+header{
+  background-color: rgb(94, 94, 253);
+  padding: 1%;
+  margin-bottom: 2%;
+}
+
+h1{
+  text-align: center;
+  text-decoration: underline;
+}
+
+form{
+  width: 670px;
+  text-align: center;
+  margin: auto;
+  padding: 1%;
+  background-color: rgb(214, 113, 113);
+  border: 2px solid rgba(0, 0, 0, 0.329);
+  border-radius: 15px;
+}
+
+label{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input{
+  padding: 0.9%;
+  margin: 1%;
+  border-radius: 8px;
+}
+
+button{
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: rgb(81, 223, 93);
+  margin-top: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
