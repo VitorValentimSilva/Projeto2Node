@@ -54,3 +54,18 @@ p{
   font-weight: bold;
   color: rgb(255, 0, 0);
 }
+
+a{
+  display: block;
+  margin-left: 40%;
+  margin-right: 40%;
+  text-align: center;
+  background-color: aqua;
+  color: black;
+  border-radius: 8px;
+  padding: 2%;
+  margin-top: 3%;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}

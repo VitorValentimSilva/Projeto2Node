@@ -1,8 +1,21 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
+import session from 'express-session'
 
 const porta = 3000
 const host = '0.0.0.0'
 const app = express()
+
+app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
+app.use(session({
+  secret: "Vi543Vale634Sil1234",
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 15
+  }
+}))
 
 var listaProdutos = []
 
@@ -152,11 +165,57 @@ function processaCadastroProduto(requisicao, resposta){
   }
 }
 
-app.use(express.urlencoded({ extended: true }))
+function autenticar(requisicao, resposta, next){
+  if(requisicao.session.usuarioAutenticado){
+    next()
+  }
+  else{
+    resposta.redirect("/login.html")
+  }
+}
 
-app.post('/cadastrarProduto', processaCadastroProduto)
+app.post('/login', (requisicao, resposta) => {
+  const usuario = requisicao.body.usuario
+  const senha = requisicao.body.senha
 
-app.get('/', (requisicao, resposta) => {
+  if(usuario && senha && (usuario == "vitor") && (senha == "123")){
+    requisicao.session.usuarioAutenticado = true
+    resposta.redirect('/')
+  }
+  else{
+    resposta.end(`
+      <!DOCTYPE html>
+      <html lang="pt-br">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Invalido</title>
+        <link rel="stylesheet" href="style.css">
+      </head>
+      <body>
+        <header>
+          <h1>Usuario ou senha invalido!</h1>
+        </header>
+        <main>
+          <a href="/login.html">Voltar ao login.</a>
+        </main>
+      </body>
+      </html>
+    `)
+  }
+})
+
+app.post('/cadastrarProduto', autenticar, processaCadastroProduto)
+
+app.get('/', autenticar, (requisicao, resposta) => {
+  const dataUltimoAcesso = requisicao.cookies.DataUltimoAcesso
+  const data = new Date()
+
+  resposta.cookie("DataUltimoAcesso", data.toLocaleString(), {
+    maxAge: 1000 * 60 * 60 * 24 * 30,
+    httpOnly: true
+  })
+
   resposta.end(`
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -170,6 +229,10 @@ app.get('/', (requisicao, resposta) => {
         <ul>
           <li><a href="index.html">Cadastrar Produto</a></li>
         </ul>
+
+        <footer>
+          <p>Seu ultimo acesso foi em ${dataUltimoAcesso}</p>
+        </footer>
       </body>
     </html>
   `
